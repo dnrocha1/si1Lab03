@@ -36,8 +36,8 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Task> generateTask(@RequestBody Task task) {
-        taskService.generateTask(task);
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        taskService.createTask(task);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
