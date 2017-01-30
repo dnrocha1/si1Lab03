@@ -1,13 +1,21 @@
 package com.daniyel.si1lab03.ws.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by Daniyel on 29/01/2017.
  */
 
+@Entity
 public class Task {
 
+    @Id
+    @GeneratedValue
     private long id;
 
     private String title;
@@ -15,6 +23,7 @@ public class Task {
     private String description;
     private List<SubTask> subTasks;
     private TaskPriority taskPriority;
+
     private TaskCategory taskCategory;
 
     public Task() {
