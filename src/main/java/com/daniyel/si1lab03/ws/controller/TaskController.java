@@ -15,6 +15,7 @@ import java.util.Collection;
  */
 
 @RestController
+//@CrossOrigin()
 @RequestMapping(value = "/tasks")
 public class TaskController {
 
@@ -38,7 +39,7 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         taskService.createTask(task);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
@@ -58,5 +59,4 @@ public class TaskController {
         Task updatedTask = taskService.updateTask(task);
         return new ResponseEntity<>(updatedTask, HttpStatus.OK);
     }
-
 }
