@@ -3,12 +3,15 @@ package com.daniyel.si1lab03.ws.service;
 import com.daniyel.si1lab03.ws.model.SubTask;
 import com.daniyel.si1lab03.ws.repository.SubTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Created by Daniyel on 30/01/2017.
  */
+
+@Service
 public class SubTaskService {
 
     @Autowired
