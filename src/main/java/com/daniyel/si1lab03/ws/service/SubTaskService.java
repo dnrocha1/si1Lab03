@@ -1,6 +1,8 @@
 package com.daniyel.si1lab03.ws.service;
 
 import com.daniyel.si1lab03.ws.model.SubTask;
+import com.daniyel.si1lab03.ws.repository.SubTaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 
@@ -9,19 +11,33 @@ import java.util.Collection;
  */
 public class SubTaskService {
 
+    @Autowired
+    SubTaskRepository subTaskRepository;
+
     public SubTask getTaskById(long id) {
+        return subTaskRepository.findOne(id);
     }
 
-
     public Collection<SubTask> getAllSubTasks() {
+        return subTaskRepository.findAll();
     }
 
     public void createSubTask(SubTask subTask) {
+        subTaskRepository.save(subTask);
     }
 
     public boolean deleteSubTask(long id) {
+        boolean result = false;
+        SubTask subTaskFound = subTaskRepository.findOne(id);
+        if (subTaskFound != null) {
+            subTaskRepository.delete(id);
+            result = true;
+        }
+        return result;
     }
 
     public SubTask updateSubTask(SubTask subTask) {
+        subTaskRepository.save(subTask);
+        return this.getTaskById(subTask.getId());
     }
 }
