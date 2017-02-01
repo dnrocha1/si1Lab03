@@ -1,29 +1,41 @@
 package com.daniyel.si1lab03.ws.model;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by Daniyel on 31/01/2017.
  */
+
+@Entity
 public class ToDoList {
-    private long id;
+
+    @Id
+    @Column(name = "todo_list_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name="title", nullable = false)
     private String title;
+
+    //mappedBy correto?
+    @OneToMany(targetEntity = Task.class, mappedBy = "toDoList", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
     public ToDoList() {
     }
 
-    public ToDoList(long id, String title, List<Task> tasks) {
+    public ToDoList(Long id, String title, List<Task> tasks) {
         this.id = id;
         this.title = title;
         this.tasks = tasks;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

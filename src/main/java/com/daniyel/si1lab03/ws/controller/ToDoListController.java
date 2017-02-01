@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 
 @RestController
-//@CrossOrigin()
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/todolist")
 public class ToDoListController {
 

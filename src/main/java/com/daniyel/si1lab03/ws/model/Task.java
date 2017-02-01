@@ -15,21 +15,37 @@ import java.util.List;
 public class Task {
 
     @Id
-    @GeneratedValue
-    private long id;
+    @Column(name = "task_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
+    @Column(name="title", nullable = false)
     private String title;
+
+    @Column(name="is_done", nullable = false)
     private boolean isDone;
+
+    @Column(name="description")
     private String description;
-    private List<SubTask> subTasks;
+
+    @Column(name = "task_priority", nullable = false)
     private TaskPriority taskPriority;
 
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    private List<SubTask> subTasks;
+
+    @ManyToOne
+    @JoinColumn(name = "task_category_id")
     private TaskCategory taskCategory;
+
+    @ManyToOne
+    @JoinColumn(name = "todo_list_id")
+    private ToDoList toDoList;
 
     public Task() {
     }
 
-    public Task(long id, String title, boolean isDone, String description, List<SubTask> subTasks,
+    public Task(Long id, String title, boolean isDone, String description, List<SubTask> subTasks,
                 TaskPriority taskPriority, TaskCategory taskCategory) {
         this.id = id;
         this.title = title;
@@ -40,11 +56,11 @@ public class Task {
         this.taskCategory = taskCategory;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

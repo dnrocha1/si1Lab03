@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 
 @RestController
-//@CrossOrigin()
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/tasks")
 public class TaskController {
 
