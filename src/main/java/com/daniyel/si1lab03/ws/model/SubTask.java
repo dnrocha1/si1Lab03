@@ -56,4 +56,8 @@ public class SubTask {
     public void setDone(boolean done) {
         isDone = done;
     }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 }

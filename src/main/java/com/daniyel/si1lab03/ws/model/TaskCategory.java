@@ -1,6 +1,7 @@
 package com.daniyel.si1lab03.ws.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Daniyel on 29/01/2017.
@@ -17,12 +18,15 @@ public class TaskCategory {
     @Column(name="title", nullable = false)
     private String title;
 
+    @OneToMany(targetEntity = Task.class, mappedBy = "taskCategory", cascade = CascadeType.ALL)
+    private List<Task> tasks;
+
     public TaskCategory() {
     }
 
-    public TaskCategory(Long id, String titulo) {
+    public TaskCategory(Long id, String title) {
         this.id = id;
-        this.title = title;
+        this.title = this.title;
     }
 
     public Long getId() {
@@ -39,5 +43,13 @@ public class TaskCategory {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

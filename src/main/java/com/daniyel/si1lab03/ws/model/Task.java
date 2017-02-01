@@ -28,6 +28,7 @@ public class Task {
     @Column(name="description")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "task_priority", nullable = false)
     private TaskPriority taskPriority;
 
@@ -105,10 +106,16 @@ public class Task {
     }
 
     public TaskCategory getTaskCategory() {
+        taskCategory.setTasks(null);
         return taskCategory;
     }
 
     public void setTaskCategory(TaskCategory taskCategory) {
         this.taskCategory = taskCategory;
     }
+
+    public void setToDoList(ToDoList toDoList) {
+        this.toDoList = toDoList;
+    }
+
 }
