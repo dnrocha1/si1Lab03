@@ -22,8 +22,8 @@ public class Task {
     @Column(name="title", nullable = false)
     private String title;
 
-    @Column(name="is_done", nullable = false)
-    private boolean isDone;
+    @Column(name="is_completed", nullable = false)
+    private boolean isCompleted;
 
     @Column(name="description")
     private String description;
@@ -39,6 +39,7 @@ public class Task {
     @JoinColumn(name = "task_category_id")
     private TaskCategory taskCategory;
 
+    //criar tarefa obrigatoriamente passando a id da task! (nullable)
     @ManyToOne
     @JoinColumn(name = "todo_list_id")
     private ToDoList toDoList;
@@ -46,11 +47,11 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long id, String title, boolean isDone, String description, List<SubTask> subTasks,
+    public Task(Long id, String title, boolean isCompleted, String description, List<SubTask> subTasks,
                 TaskPriority taskPriority, TaskCategory taskCategory) {
         this.id = id;
         this.title = title;
-        this.isDone = isDone;
+        this.isCompleted = isCompleted;
         this.description = description;
         this.subTasks = subTasks;
         this.taskPriority = taskPriority;
@@ -73,12 +74,12 @@ public class Task {
         this.title = title;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setDone(boolean completed) {
+        isCompleted = completed;
     }
 
     public String getDescription() {
