@@ -18,7 +18,7 @@ public class SubTask {
     private String title;
 
     @Column(name="is_completed", nullable = false)
-    private boolean isCompleted;
+    private boolean completed;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
@@ -30,7 +30,7 @@ public class SubTask {
     public SubTask(Long id, String title, boolean isCompleted) {
         this.id = id;
         this.title = title;
-        this.isCompleted = isCompleted;
+        this.completed = isCompleted;
     }
 
     public Long getId() {
@@ -50,11 +50,11 @@ public class SubTask {
     }
 
     public boolean isCompleted() {
-        return isCompleted;
+        return completed;
     }
 
     public void setCompleted(boolean completed) {
-        isCompleted = completed;
+        this.completed = completed;
     }
 
     public void setTask(Task task) {

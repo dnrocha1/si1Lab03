@@ -23,7 +23,7 @@ public class Task {
     private String title;
 
     @Column(name="is_completed", nullable = false)
-    private boolean isCompleted;
+    private boolean completed;
 
     @Column(name="description")
     private String description;
@@ -51,7 +51,7 @@ public class Task {
                 TaskPriority taskPriority, TaskCategory taskCategory) {
         this.id = id;
         this.title = title;
-        this.isCompleted = isCompleted;
+        this.completed = isCompleted;
         this.description = description;
         this.subTasks = subTasks;
         this.taskPriority = taskPriority;
@@ -75,11 +75,11 @@ public class Task {
     }
 
     public boolean isCompleted() {
-        return isCompleted;
+        return completed;
     }
 
-    public void setDone(boolean completed) {
-        isCompleted = completed;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public String getDescription() {
