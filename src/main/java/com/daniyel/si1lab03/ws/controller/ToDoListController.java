@@ -16,7 +16,7 @@ import java.util.Collection;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/todolist")
+@RequestMapping(value = "/todoList")
 public class ToDoListController {
 
     @Autowired

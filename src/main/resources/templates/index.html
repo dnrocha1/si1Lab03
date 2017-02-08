@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TaskApp</title>
+
+    <!--bootstrap and jquery-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+
+    <!--restangular-->
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"></script>
+
+    <!--ui.router-->
+    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!--jsgrid-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+    <!-- ngTable -->
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css"/>
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
+    <!-- ui-grid -->
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css"/>
+    <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+
+    <!-- js grid -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>
+
+    <!--angular paging -->
+    <script src="https://rawgit.com/brantwills/Angular-Paging/v2.2.2/dist/paging.min.js"></script>
+
+    <!--local files-->
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+    <script src="./js/app.js"></script>
+    <script src="./js/controller/todolist-controller.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("#grid-basic").bootgrid();
+
+            $(".navbar-nav li").hover(function () {
+                $(this).toggleClass("active");
+            });
+        });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">TaskApp</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="task">Todas as Tarefas</a></li>
+            <li><a ui-sref="todoList">Listas de Tarefas</a></li>
+            <li><a ui-sref="category">Categorias</a></li>
+            <li><a href="https://github.com/dnrocha1/">Contato</a></li>
+        </ul>
+        <p class="navbar-text pull-right">Total de tarefas a cumprir: 30</p>
+    </div>
+</nav>
+<ui-view></ui-view>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").tooltip({selector: '[data-toggle=tooltip]'});
+    });
+</script>
+<div>
+    <div id="content">
+        <div class="well" id="adicionarTasks">
+            <form ng-submit="addTodoList()">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input type="text" ng-model="todoListInput" class="form-control"
+                               placeholder="Digite o nome da lista de tarefas">
+                    </div>
+                    <div class="col-md-3">
+                        <input class="btn btn-primary bnt-block" type="submit" value="Adicionar"
+                               ng-disabled="!todoListInput">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="sidebar-nav" id="content">
+        <ul class="list-group nav scrollable">
+            <li class="list-group-item" ng-repeat="todoList in todoLists">
+                {{todoList.title}}
+                <div class="pull-right">
+                    <a data-toggle="tooltip" data-placement="top" title="Excluir Lista de Tarefas"
+                       ng-click="deleteTodoList(todoList)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </div>
+                <div class="pull-right" style="margin-right: 12px">
+                    <a data-toggle="tooltip" data-placement="top" title="Alterar Lista de Tarefas">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </div>
+                <div class="pull-right" style="margin-right: 15px">
+                    <a data-toggle="tooltip" data-placement="top" title="Abrir Lista de Tarefas">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <input class="btn btn-danger btn-block" type="submit" value="Remover Todas" ng-disabled="todoLists.length == 0" ng-click="removeAll()">
+    </div>
+</div>
