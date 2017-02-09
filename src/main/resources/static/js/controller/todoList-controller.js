@@ -11,12 +11,12 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
 
     $scope.addTodoList = function () {
         $scope.todoList = {
-            title:$scope.todoListInput
+            title: $scope.todoListInput
         };
         $scope.todoListInput = "";
         saveTodoLists();
     };
-    
+
     $scope.removeAll = function () {
         if (confirm("Deseja deletar todas as tarefas?")) {
             angular.forEach($scope.todoLists, function (todoList) {
@@ -24,10 +24,11 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
             });
         }
     };
-    
+
     $scope.loadTodoLists = function () {
-        $http({method:'GET',url:'http://localhost:8080/todoList'}).
-        then(function (responseSuccess) {
+        $http({
+            method: 'GET', url: 'http://localhost:8080/todoList'
+        }).then(function (responseSuccess) {
             $scope.todoLists = responseSuccess.data;
         }, function (responseFail) {
             console.log(responseFail.data);
@@ -36,8 +37,11 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
     };
 
     saveTodoLists = function () {
-        $http({method:'POST',url:'http://localhost:8080/todoList',data:$scope.todoList}).
-        then(function (responseSuccess) {
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/todoList',
+            data: $scope.todoList
+        }).then(function (responseSuccess) {
             $scope.todoLists.push(responseSuccess.data);
             console.log($scope.todoLists);
         }, function (responseFail) {
@@ -47,10 +51,12 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
     };
 
     $scope.deleteTodoList = function (todoList) {
-        $http({method:'DELETE',url:'http://localhost:8080/todoList/'+todoList.id}).
-        then(function (responseSuccess) {
+        $http({
+            method: 'DELETE',
+            url: 'http://localhost:8080/todoList/' + todoList.id
+        }).then(function (responseSuccess) {
             var pos = $scope.todoLists.indexOf(todoList);
-            $scope.todoLists.splice(pos,1);
+            $scope.todoLists.splice(pos, 1);
             console.log($scope.todoLists);
         }, function (responseFail) {
             console.log(responseFail.data);
@@ -58,11 +64,22 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         });
     };
 
-    $scope.modifyTodoList = function (todoList) {
-        $http({method:'PUT',url:'http://localhost:8080/todoList/'+todoList.id}).
-        then(function (responseSuccess) {
-            var pos = $scope.todoLists.indexOf(todoList);
-            $scope.todoLists.splice(pos,1);
+    $scope.updateTodoList = function (todoList) {
+        $scope.todoList = todoList;
+    };
+
+    $scope.editTodoList = function () {
+        var previousTodo = $scope.todoList;
+        $scope.todoList.title = $scope.todoListInput;
+        $http({
+            method: 'PUT',
+            url: 'http://localhost:8080/todoList',
+            data: $scope.todoList
+        }).then(function (responseSuccess) {
+            var pos = $scope.todoLists.indexOf(previousTodo);
+            $scope.todoLists.splice(pos, 1);
+            $scope.todoLists.push($scope.todoList);
+            $scope.todoListInput = "";
         }, function (responseFail) {
             console.log(responseFail.data);
             console.log(responseFail.status);

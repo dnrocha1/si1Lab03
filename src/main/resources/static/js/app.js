@@ -12,11 +12,12 @@ app.config(function ($stateProvider) {
         .state('todoList',{
             url:'/todoList',
             templateUrl: 'view/todoList.html',
-            controller: 'todoListController',
+            controller: 'todoListController'
         })
         .state('task',{
-            url:'/tasks',
+            url:'/tasks/:todoListId',
             templateUrl: 'view/task.html',
+            controller: 'taskController'
         })
         .state('category',{
             url:'/taskcategories',
