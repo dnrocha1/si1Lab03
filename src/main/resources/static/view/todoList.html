@@ -1,8 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("body").tooltip({selector: '[data-toggle=tooltip]'});
-    });
-</script>
 <div>
     <div id="content">
         <div class="well" id="adicionarTasks">
@@ -25,19 +20,19 @@
             <li class="list-group-item" ng-repeat="todoList in todoLists">
                 {{todoList.title}}
                 <div class="pull-right">
-                    <a data-toggle="tooltip" data-placement="top" title="Excluir Lista de Tarefas"
+                    <a data-toggle="tooltip" data-placement="top" title="Excluir"
                        ng-click="deleteTodoList(todoList)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </div>
                 <div class="pull-right" style="margin-right: 12px">
-                    <a data-toggle="tooltip" data-placement="top" title="Editar Lista de Tarefas"
+                    <a data-toggle="tooltip" data-placement="top" title="Editar"
                        ng-click="updateTodoList(todoList)">
                         <span data-toggle="modal" data-target="#editionModal" class="glyphicon glyphicon-pencil"></span>
                     </a>
                 </div>
                 <div class="pull-right" style="margin-right: 15px">
-                    <a data-toggle="tooltip" data-placement="top" title="Abrir Lista de Tarefas"
+                    <a data-toggle="tooltip" data-placement="top" title="Abrir"
                        ui-sref="task({todoListId:todoList.id})">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
@@ -64,7 +59,7 @@
                             </div>
                             <div class="col-md-3">
                                 <input class="btn btn-primary bnt-block" type="submit" value="Salvar"
-                                ng-click="editTodoList()">
+                                       ng-disabled="!todoListInput" ng-click="editTodoList()">
                             </div>
                         </div>
                     </form>

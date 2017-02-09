@@ -6,8 +6,8 @@
 angular.module('todoApp').controller("todoListController", function ($scope, $http) {
 
     $scope.todoListInput = "";
-    $scope.todoLists = [];
     $scope.todoList = {};
+    $scope.todoLists = [];
 
     $scope.addTodoList = function () {
         $scope.todoList = {
@@ -25,9 +25,10 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         }
     };
 
-    $scope.loadTodoLists = function () {
+    loadTodoLists = function () {
         $http({
-            method: 'GET', url: 'http://localhost:8080/todoList'
+            method: 'GET',
+            url: 'http://localhost:8080/todoList'
         }).then(function (responseSuccess) {
             $scope.todoLists = responseSuccess.data;
         }, function (responseFail) {
@@ -86,6 +87,6 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         });
     };
 
-    $scope.loadTodoLists();
+    loadTodoLists();
 
 });

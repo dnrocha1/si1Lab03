@@ -52,6 +52,8 @@
         $(document).ready(function () {
             //$("#grid-basic").bootgrid();
 
+            $("body").tooltip({selector: '[data-toggle=tooltip]'});
+
             $(".navbar-nav li").hover(function () {
                 $(this).toggleClass("active");
             });
