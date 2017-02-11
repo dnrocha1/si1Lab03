@@ -37,7 +37,7 @@ angular.module('todoApp').controller("taskController", function ($scope, $http, 
             title: $scope.taskInput,
             description: $scope.descriptionInput,
             taskPriority: getPriority(),
-            taskCategory: {id: $scope.taskCategoryId},//taskCategory, /*SERIA COM '=' ??*/
+            taskCategory: {id: $scope.taskCategoryId},
             toDoList: {id: todoList.id}
         };
         saveTask();
