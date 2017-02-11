@@ -17,6 +17,20 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         saveTodoLists();
     };
 
+    var saveTodoLists = function () {
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/todoList',
+            data: $scope.todoList
+        }).then(function (responseSuccess) {
+            $scope.todoLists.push(responseSuccess.data);
+            console.log($scope.todoLists);
+        }, function (responseFail) {
+            console.log(responseFail.data);
+            console.log(responseFail.status);
+        });
+    };
+
     $scope.removeAll = function () {
         if (confirm("Deseja deletar todas as tarefas?")) {
             angular.forEach($scope.todoLists, function (todoList) {
@@ -25,26 +39,12 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         }
     };
 
-    loadTodoLists = function () {
+    var loadTodoLists = function () {
         $http({
             method: 'GET',
             url: 'http://localhost:8080/todoList'
         }).then(function (responseSuccess) {
             $scope.todoLists = responseSuccess.data;
-        }, function (responseFail) {
-            console.log(responseFail.data);
-            console.log(responseFail.status);
-        });
-    };
-
-    saveTodoLists = function () {
-        $http({
-            method: 'POST',
-            url: 'http://localhost:8080/todoList',
-            data: $scope.todoList
-        }).then(function (responseSuccess) {
-            $scope.todoLists.push(responseSuccess.data);
-            console.log($scope.todoLists);
         }, function (responseFail) {
             console.log(responseFail.data);
             console.log(responseFail.status);

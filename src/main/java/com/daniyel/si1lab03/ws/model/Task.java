@@ -32,7 +32,7 @@ public class Task {
     @Column(name = "task_priority", nullable = false)
     private TaskPriority taskPriority;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = SubTask.class, mappedBy = "task", cascade = CascadeType.ALL)
     private List<SubTask> subTasks;
 
     @ManyToOne
@@ -119,4 +119,8 @@ public class Task {
         this.toDoList = toDoList;
     }
 
+    public ToDoList getToDoList() {
+        toDoList.setTasks(null);
+        return toDoList;
+    }
 }

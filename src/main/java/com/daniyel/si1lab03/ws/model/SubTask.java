@@ -60,4 +60,11 @@ public class SubTask {
     public void setTask(Task task) {
         this.task = task;
     }
+
+    public Task getTask() {
+        //task.setSubTasks(null);
+        //task.setToDoList(null);
+        task = null;
+        return task;
+    }
 }

@@ -1,0 +1,31 @@
+<div>
+
+    <div class="well" style="text-align: center" id="adicionarTasks">
+        <p>Total de tarefas a cumprir: {{ allTasks.length }}</p>
+    </div>
+    <div id="content">
+        <div class="form-group">
+            <label style="color:white">Pesquisa:</label>
+            <input type="text" ng-model="search">
+            <div class="form-group">
+                <label for="order">Order by</label>
+                <select class="form-control" id="order" ng-model="order">
+                    <option value="null">None</option>
+                    <option value="title">Title</option>
+                    <option value="taskCategory.title">Category</option>
+                    <option value="taskPriority">Priority</option>
+                </select>
+            </div>
+        </div>
+        <ul class="list-group nav scrollable">
+            <li class="list-group-item" ng-repeat="task in allTasks | filter: search | orderBy: order">
+                {{task.title}}
+                <div class="pull-right" style="padding-left: 5px">
+                    <span class='label label-success label-{{getColor(task)}}'>{{task.taskPriority}}</span>
+                </div>
+                <div class="pull-right">
+                    <span class='label label-default'>{{task.taskCategory.title}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>

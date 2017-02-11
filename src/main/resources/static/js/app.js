@@ -19,9 +19,19 @@ app.config(function ($stateProvider) {
             templateUrl: 'view/task.html',
             controller: 'taskController'
         })
+        .state('contact',{
+            url:'/contact',
+            templateUrl: 'view/contact.html'
+        })
+        .state('allTasks',{
+            url:'/allTasks',
+            templateUrl: 'view/allTasks.html',
+            controller: 'allTasksController'
+        })
         .state('category',{
             url:'/taskcategories',
-            templateUrl: 'view/category.html'
+            templateUrl: 'view/category.html',
+            controller: 'categoryController'
         })
 });
 
