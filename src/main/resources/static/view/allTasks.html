@@ -18,6 +18,14 @@
                 </select>
             </div>
         </div>
+        <div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
+                     aria-valuemax="100" ng-style="{ 'width': getPercentage() + '%' } ">
+                    {{ getPercentage() | number:2 }}%
+                </div>
+            </div>
+        </div>
         <ul class="list-group nav scrollable">
             <li class="list-group-item" ng-repeat="task in allTasks | filter: search | orderBy: order">
                 <span class="isDone-{{task.completed}}">{{task.title}}</span>
