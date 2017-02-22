@@ -74,11 +74,14 @@
                         <div class="form-group">
                             <label for="cat">Categoria</label>
                             <select class="form-control" id="cat" ng-model="taskCategoryId">
+                                <option value="" disabled selected>Selecione a categoria</option>
                                 <option ng-repeat="category in allCategories" value="{{category.id}}">{{category.title}}
                                 </option>
                             </select>
                         </div>
-                        <button type="button" data-toggle="modal" data-target="#newCategoryModal" class="btn btn-info btn-block" style="margin-bottom: 10px">Criar categoria</button>
+                        <button type="button" data-toggle="modal" data-target="#newCategoryModal"
+                                class="btn btn-info btn-block" style="margin-bottom: 10px">Criar categoria
+                        </button>
                         <div class="form-group">
                             <label>Prioridade</label>
                             <div class="btn-group btn-group-justified">
@@ -89,7 +92,7 @@
                         </div>
                         <br>
                         <input class="btn btn-primary btn-block" type="submit" value="Salvar Tarefa"
-                               data-dismiss="modal" ng-click="addTask()" ng-disabled="!taskInput">
+                               data-dismiss="modal" ng-click="addTask()" ng-disabled="(!taskInput || !taskCategoryId)">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -157,18 +160,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="well">
-                        <form ng-submit="addCategory()">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <input type="text" ng-model="categoryInput" class="form-control"
-                                           placeholder="Digite o nome da nova categoria">
-                                </div>
-                                <div class="col-md-3">
-                                    <input class="btn btn-primary bnt-block" type="submit" value="Adicionar"
-                                           ng-disabled="!categoryInput">
-                                </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="text" ng-model="categoryInput" class="form-control"
+                                       placeholder="Digite o nome da nova categoria">
                             </div>
-                        </form>
+                            <div class="col-md-3">
+                                <input class="btn btn-primary bnt-block" type="submit" value="Adicionar"
+                                       ng-click="addCategory()" ng-disabled="!categoryInput">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

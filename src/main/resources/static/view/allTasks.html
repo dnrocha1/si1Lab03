@@ -1,25 +1,26 @@
 <div>
-
-    <div class="well" style="text-align: center" id="adicionarTasks">
-        <p>Total de tarefas a cumprir: {{ allTasks.length }}</p>
+    <div id="content">
+        <h2>Total de tarefas a cumprir: {{ (allTasks | filter: {completed:false}).length }}<h2>
+    </div>
+    <div id="content">
+        <label style="color:white">Pesquisa:</label>
+        <input type="text" ng-model="search">
     </div>
     <div id="content">
         <div class="form-group">
-            <label style="color:white">Pesquisa:</label>
-            <input type="text" ng-model="search">
             <div class="form-group">
-                <label for="order">Order by</label>
                 <select class="form-control" id="order" ng-model="order">
-                    <option value="null">None</option>
-                    <option value="title">Title</option>
-                    <option value="taskCategory.title">Category</option>
-                    <option value="taskPriority">Priority</option>
+                    <option value="" disabled selected>Ordenar por</option>
+                    <option value="title">Título</option>
+                    <option value="taskCategory.title">Categoria</option>
+                    <option value="taskPriority">Prioridade</option>
+                    <option value="completed">Tarefa finalizada</option>
                 </select>
             </div>
         </div>
         <ul class="list-group nav scrollable">
             <li class="list-group-item" ng-repeat="task in allTasks | filter: search | orderBy: order">
-                {{task.title}}
+                <span class="isDone-{{task.completed}}">{{task.title}}</span>
                 <div class="pull-right" style="padding-left: 5px">
                     <span class='label label-success label-{{getColor(task)}}'>{{task.taskPriority}}</span>
                 </div>

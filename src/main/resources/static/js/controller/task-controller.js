@@ -15,6 +15,7 @@ angular.module('todoApp').controller("taskController", function ($scope, $http, 
     $scope.categoryInput = "";
     $scope.categories = [];
     var category = {};
+    $scope.taskPriority = "MIDDLE";
 
     var loadTodoList = function () {
         $http({
@@ -44,7 +45,6 @@ angular.module('todoApp').controller("taskController", function ($scope, $http, 
     };
 
     var saveTask = function () {
-        console.log($scope.task);
         $http({
             method: 'POST',
             url: 'http://localhost:8080/tasks',
@@ -210,7 +210,7 @@ angular.module('todoApp').controller("taskController", function ($scope, $http, 
     $scope.addCategory = function () {
         category = {title:$scope.categoryInput};
         saveCategory();
-        $scope.cleanFields();
+        $scope.categoryInput = "";
     };
 
     var saveCategory = function () {

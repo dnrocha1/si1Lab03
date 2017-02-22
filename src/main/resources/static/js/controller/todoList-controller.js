@@ -24,7 +24,6 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
             data: $scope.todoList
         }).then(function (responseSuccess) {
             $scope.todoLists.push(responseSuccess.data);
-            console.log($scope.todoLists);
         }, function (responseFail) {
             console.log(responseFail.data);
             console.log(responseFail.status);
@@ -58,7 +57,6 @@ angular.module('todoApp').controller("todoListController", function ($scope, $ht
         }).then(function (responseSuccess) {
             var pos = $scope.todoLists.indexOf(todoList);
             $scope.todoLists.splice(pos, 1);
-            console.log($scope.todoLists);
         }, function (responseFail) {
             console.log(responseFail.data);
             console.log(responseFail.status);

@@ -22,7 +22,6 @@ angular.module('todoApp').controller("categoryController", function ($scope, $ht
 
 
     $scope.deleteCategory = function (category) {
-        console.log("entrou aqui");
         $http({
             method: 'DELETE',
             url: 'http://localhost:8080/taskcategories/' + category.id
